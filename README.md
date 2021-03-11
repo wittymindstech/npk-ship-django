@@ -3,4 +3,4 @@
 `phython manage.py runserver`
 
 
-()![npk.PNG]
+![](npk.PNG)

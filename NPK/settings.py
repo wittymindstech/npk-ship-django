@@ -151,6 +151,8 @@ AWS_ACCESS_KEY_ID = 'AKIA2QMUNTD5DAQE7Y42'  # Your AWS Access Key ID
 AWS_SECRET_ACCESS_KEY = 'fDgnwRc9W71x5tYEjvv47nYBAro/BYPxNCKtlSxu'  # Your AWS Secret Access Key
 AWS_STORAGE_BUCKET_NAME = 'npkbucket'  # Your AWS Bucket name
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_CLOUDFRONT_DOMAIN = 'd16uehasxyyfen.cloudfront.net'
+
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400',
 }
@@ -159,7 +161,13 @@ STATICFILES_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATICFILES_LOCATION = 'static'
+#STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CLOUDFRONT_DOMAIN, STATICFILES_LOCATION)
+
+MEDIAFILES_LOCATION = 'media'
+MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CLOUDFRONT_DOMAIN, MEDIAFILES_LOCATION)
+
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder',

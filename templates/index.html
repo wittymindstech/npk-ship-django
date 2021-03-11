@@ -1,0 +1,367 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+{% block style %}
+<style>
+  .custom-button {
+    font-size:0.5em;
+    padding:2px;
+  }
+  /* Rounded pill classes for horizontal sides */
+  .rounded-pill-left {
+    border-top-left-radius: 50rem !important;
+    border-bottom-left-radius: 50rem !important;
+  }
+  .rounded-pill-right {
+    border-top-right-radius: 50rem !important;
+    border-bottom-right-radius: 50rem !important;
+  }
+
+  /* Another classes to use */
+  .rounded-t-l-0 {
+    border-top-left-radius: 0 !important;
+  }
+  .rounded-t-r-0 {
+    border-top-right-radius: 0 !important;
+  }
+  .rounded-b-l-0 {
+    border-bottom-left-radius: 0 !important;
+  }
+  .rounded-b-r-0 {
+    border-bottom-right-radius: 0 !important;
+  }
+  .rounded-x-l-0 {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+  .rounded-x-r-0 {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
+</style>
+{% endblock %}
+{% block body %}
+        <!--slider section start-->
+        <div class="hero-section section position-relative">
+            <div class="hero-slider section">
+
+                <!--Hero Item start-->
+                <div class="hero-item  bg-image" data-bg="{% static 'assets/images/hero/hero-1.jpg' %}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+
+                                <!--Hero Content start-->
+                                <div class="hero-content-2 center">
+
+                                    <h2>Explore & Learn <br> Modern & Exclusive Marinetime Courses</h2>
+                                          <form action="#" method="get">
+                                              <div class="row">
+                                                <div class="col-md-12 mt-5">
+                                                  <div class="input-group">
+                                                    <input class="form-control p-4 border rounded-pill-left border-right-0" name="q" type="search" placeholder="Search Your Shipping Courses..." id="example-search-input">
+                                                    <span class="input-group-append">
+                                                      <button class="btn btn-outline-secondary border rounded-pill-right border-left-0 pl-5 pr-5" type="button">
+                                                          <i class="bx bx-search-alt bx-spin" style="color:	white"></i>
+                                                      </button>
+                                                    </span>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                          </form>
+
+                                </div>
+                                <!--Hero Content end-->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Hero Item end-->
+
+            </div>
+        </div>
+        <!--slider section end-->
+
+        <!--Product section start-->
+        <div class="product-section section pt-70 pt-lg-50 pt-md-40 pt-sm-30 pt-xs-20 pb-55 pb-lg-35 pb-md-25 pb-sm-15 pb-xs-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="section-title text-center mb-15">
+                            <h2>NPK-Knots Courses</h2>
+                        </div>
+                        <div class="product-tab mb-50 mb-sm-30 mb-xs-20">
+                            <ul class="nav">
+                                <li><a class="active show" data-toggle="tab" href="#superyachts">Superyachts</a></li>
+                                <li><a data-toggle="tab" href="#offshore">Offshore</a></li>
+                                <li><a data-toggle="tab" href="#safety">Safety and Security</a></li>
+                                <li><a data-toggle="tab" href="#surveying">Surveying</a></li>
+                                <li><a data-toggle="tab" href="#shipping">Shipping</a></li>
+                                <li><a data-toggle="tab" href="#repair">Building and Repair</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div id="superyachts" class="tab-pane fade active show">
+                        <div class="row">
+                            {% for course in courses %}
+                            {% if course.tag == 'SY' %}
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <!--  Single Grid product Start -->
+                                <div class="single-grid-product mb-40">
+                                    <div class="product-image">
+                                        <img src="{{ course.file.url }}" class="img-fluid" alt="{{ course.title }}">
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="title">{{ course.title }}</h3>
+                                        <p class="">Duration - {{ course.duration }}/Hr</p>
+                                        <p class="product-price"><span class="discounted-price">₹ {{ course.price }}</span></p>
+                                        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="{{ course.rzr_pay_id }}" async> </script> </form>
+                                    </div>
+                                </div>
+                                <!--  Single Grid product End -->
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div id="offshore" class="tab-pane">
+                        <div class="row">
+                            {% for course in courses %}
+                            {% if course.tag == 'OS' %}
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <!--  Single Grid product Start -->
+                                <div class="single-grid-product mb-40">
+                                    <div class="product-image">
+                                        <img src="{{ course.file.url }}" class="img-fluid" alt="{{ course.title }}">
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="title">{{ course.title }}</h3>
+                                        <p class="">Duration - {{ course.duration }}/Hr</p>
+                                        <p class="product-price"><span class="discounted-price">₹ {{ course.price }}</span></p>
+                                        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="{{ course.rzr_pay_id }}" async> </script> </form>
+                                    </div>
+                                </div>
+                                <!--  Single Grid product End -->
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div id="safety" class="tab-pane">
+                        <div class="row">
+                            {% for course in courses %}
+                            {% if course.tag == 'SS' %}
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <!--  Single Grid product Start -->
+                                <div class="single-grid-product mb-40">
+                                    <div class="product-image">
+                                        <img src="{{ course.file.url }}" class="img-fluid" alt="{{ course.title }}">
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="title">{{ course.title }}</h3>
+                                        <p class="">Duration - {{ course.duration }}/Hr</p>
+                                        <p class="product-price"><span class="discounted-price">₹ {{ course.price }}</span></p>
+                                        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="{{ course.rzr_pay_id }}" async> </script> </form>
+                                    </div>
+                                </div>
+                                <!--  Single Grid product End -->
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div id="surveying" class="tab-pane">
+                        <div class="row">
+                            {% for course in courses %}
+                            {% if course.tag == 'SG' %}
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <!--  Single Grid product Start -->
+                                <div class="single-grid-product mb-40">
+                                    <div class="product-image">
+                                        <img src="{{ course.file.url }}" class="img-fluid" alt="{{ course.title }}">
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="title">{{ course.title }}</h3>
+                                        <p class="">Duration - {{ course.duration }}/Hr</p>
+                                        <p class="product-price"><span class="discounted-price">₹ {{ course.price }}</span></p>
+                                        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="{{ course.rzr_pay_id }}" async> </script> </form>
+                                    </div>
+                                </div>
+                                <!--  Single Grid product End -->
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div id="shipping" class="tab-pane">
+                        <div class="row">
+                            {% for course in courses %}
+                            {% if course.tag == 'SP' %}
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <!--  Single Grid product Start -->
+                                <div class="single-grid-product mb-40">
+                                    <div class="product-image">
+                                        <img src="{{ course.file.url }}" class="img-fluid" alt="{{ course.title }}">
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="title">{{ course.title }}</h3>
+                                        <p class="">Duration - {{ course.duration }}/Hr</p>
+                                        <p class="product-price"><span class="discounted-price">₹ {{ course.price }}</span></p>
+                                        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="{{ course.rzr_pay_id }}" async> </script> </form>
+                                    </div>
+                                </div>
+                                <!--  Single Grid product End -->
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div id="repair" class="tab-pane">
+                        <div class="row">
+                            {% for course in courses %}
+                            {% if course.tag == 'BR' %}
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <!--  Single Grid product Start -->
+                                <div class="single-grid-product mb-40">
+                                    <div class="product-image">
+                                        <img src="{{ course.file.url }}" class="img-fluid" alt="{{ course.title }}">
+                                    </div>
+                                    <div class="product-content">
+                                        <h3 class="title">{{ course.title }}</h3>
+                                        <p class="">Duration - {{ course.duration }}/Hr</p>
+                                        <p class="product-price"><span class="discounted-price">₹ {{ course.price }}</span></p>
+                                        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="{{ course.rzr_pay_id }}" async> </script> </form>
+                                    </div>
+                                </div>
+                                <!--  Single Grid product End -->
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Product section end-->
+
+        <!--Features section start-->
+        <div class="features-section section pt-30 pt-lg-15 pt-md-0 pt-sm-0 pt-xs-15" style="background:white">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-6">
+                        <!-- Single Feature Start -->
+                        <div class="single-feature mb-30">
+                            <div class="feature-image">
+                                <img src="{% static 'assets/images/icons/feature-1.png' %}" class="img-fluid" alt="">
+                            </div>
+                            <div class="feature-content">
+                                <h4 class="title">Instant Delivery</h4>
+                                <p class="short-desc">After Successful Payment, You will Get Email with Courses</p>
+                            </div>
+                        </div>
+                        <!-- Single Feature End -->
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <!-- Single Feature Start -->
+                        <div class="single-feature mb-30">
+                            <div class="feature-image">
+                                <img src="{% static 'assets/images/icons/feature-2.png' %}" class="img-fluid" alt="">
+                            </div>
+                            <div class="feature-content">
+                                <h4 class="title">Quality Products</h4>
+                                <p class="short-desc">We ensure the product quality that is our main goal </p>
+                            </div>
+                        </div>
+                        <!-- Single Feature End -->
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <!-- Single Feature Start -->
+                        <div class="single-feature mb-30">
+                            <div class="feature-image">
+                                <img src="{% static 'assets/images/icons/rating.png' %}" class="img-fluid" alt="">
+                            </div>
+                            <div class="feature-content">
+                                <h4 class="title">Expert Team</h4>
+                                <p class="short-desc">Provide Expert Advice for 18/7 </p>
+                            </div>
+                        </div>
+                        <!-- Single Feature End -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--Features section end-->
+
+        <!--Blog section start-->
+        <div class="blog-section section pt-65 pt-lg-45 pt-md-35 pt-sm-20 pt-xs-15 pb-65 pb-lg-45 pb-md-35 pb-sm-25 pb-xs-15">
+            <div class="container">
+
+                <div class="row mb-50 mb-xs-20">
+                    <div class="col">
+                        <div class="section-title text-center">
+                            <h2>Latest News and Update</h2>
+                            <span>OUR BLOG POST</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    {% for blog in blogs %}
+                    <div class="blog col-lg-6 col-md-6">
+                        <div class="blog-inner mb-30">
+                            <div class="blog-media"><img src="{{ blog.file.url }}" alt="{{ blog.title }}"></div>
+                            <div class="content">
+                                <ul class="meta">
+                                    <li class="badge badge-secondary">{{ blog.datetime }}</li>
+                                </ul>
+                                <h3 class="title">{{ blog.title }}</h3>
+                                <p class="read-more">{{ blog.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+        </div>
+        <!--Blog section end-->
+
+        <!-- Newsletter Section Start -->
+        <div class="newsletter-section section bg-gray-two pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-95 pb-lg-75 pb-md-65 pb-sm-60 pb-xs-50">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="newsletter-content">
+                            <h2>Subscribe Our Newsletter</h2>
+                            <p>Subscribe Today for free and save 10% on your first purchase.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="newsletter-wrap">
+                            <div class="newsletter-form">
+                                <form id="mc-form" class="mc-form">
+                                    <input type="email" placeholder="Enter Your Email Address Here..." required>
+                                    <button type="submit" value="submit">SUBSCRIBE!</button>
+                                </form>
+
+                            </div>
+                            <!-- mailchimp-alerts Start -->
+                            <div class="mailchimp-alerts">
+                                <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                                <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                                <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                            </div>
+                            <!-- mailchimp-alerts end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Newsletter Section End -->
+{% endblock body %}
